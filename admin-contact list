@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Contact List</title>
+    <style>
+        body {
+            background: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .header-bar {
+            border-bottom: 2px solid #000;
+            padding: 20px 0 0 0;
+        }
+        .dots {
+            margin-left: 40px;
+            font-size: 24px;
+            letter-spacing: 8px;
+        }
+        .admin-title {
+            font-size: 48px;
+            font-weight: bold;
+            margin: 40px 0 0 60px;
+            letter-spacing: 2px;
+        }
+        .admin-nav {
+            display: flex;
+            gap: 40px;
+            margin: 30px 0 0 60px;
+            font-size: 22px;
+            letter-spacing: 2px;
+        }
+        .admin-nav a {
+            color: #000;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .admin-nav a.active {
+            font-weight: bold;
+            text-decoration: underline;
+        }
+        .table-container {
+            margin: 50px auto 0 auto;
+            width: 80%;
+            max-width: 1100px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 20px;
+            letter-spacing: 1px;
+        }
+        th, td {
+            border: 2px solid #000;
+            padding: 18px 10px;
+            text-align: center;
+        }
+        th {
+            background: #fff;
+            font-weight: bold;
+        }
+        td {
+            background: #fff;
+            height: 60px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-bar">
+        <span class="dots">&#9679;&#9679;&#9679;</span>
+    </div>
+    <div class="admin-title">ADMIN</div>
+    <div class="admin-nav">
+        <a href="admin-booking.html">BOOKING LIST</a>
+        <a href="admin-contact.html" class="active">CONTACT LIST</a>
+    </div>
+    <div class="table-container">
+        <table>
+            <tr>
+                <th>NAME</th>
+                <th>EMAIL</th>
+                <th>PHONE</th>
+                <th>CUSTOMER MESSAGE</th>
+            </tr>
+            <tr>
+                <td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <td></td><td></td><td></td><td></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

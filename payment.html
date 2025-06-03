@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment - Lumiere Homestay</title>
+    <style>
+        body {
+            background: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .header-bar {
+            border-bottom: 2px solid #000;
+            padding: 20px 0 0 0;
+        }
+        .dots {
+            margin-left: 40px;
+            font-size: 24px;
+            letter-spacing: 8px;
+        }
+        .main-content {
+            max-width: 1100px;
+            margin: 60px auto 0 auto;
+            display: flex;
+            flex-direction: row;
+            gap: 40px;
+        }
+        .left, .right {
+            flex: 1;
+        }
+        .left {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .bank-section, .touchngo-section {
+            width: 100%;
+            margin-bottom: 30px;
+        }
+        .bank-btn, .touchngo-btn {
+            width: 100%;
+            padding: 18px 0;
+            font-size: 20px;
+            border: 2px solid #222;
+            background: #fff;
+            margin: 10px 0 0 0;
+            font-weight: bold;
+            letter-spacing: 2px;
+            cursor: pointer;
+        }
+        .touchngo-btn {
+            margin-bottom: 20px;
+        }
+        .qr-section {
+            margin-top: 10px;
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .qr-label {
+            margin-bottom: 10px;
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+        .qr-placeholder {
+            width: 260px;
+            height: 260px;
+            border: 6px solid #222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 120px;
+            color: #888;
+            background: #fafafa;
+        }
+        .right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            margin-top: 30px;
+        }
+        .upload-label {
+            font-size: 14px;
+            letter-spacing: 1px;
+            margin-bottom: 18px;
+        }
+        .upload-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .upload-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            border: 2px solid #222;
+            padding: 18px 40px;
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+        .upload-btn span {
+            margin-left: 12px;
+            font-size: 28px;
+        }
+        .complete-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 32px;
+            background: #000;
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 4px;
+            border: none;
+            transition: background 0.2s;
+            cursor: pointer;
+        }
+        .complete-btn:disabled {
+            background: #888;
+            cursor: not-allowed;
+        }
+        @media (max-width: 900px) {
+            .main-content {
+                flex-direction: column;
+                gap: 0;
+            }
+            .left, .right {
+                width: 100%;
+                align-items: center;
+            }
+            .right {
+                margin-top: 40px;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header-bar">
+        <span class="dots">&#9679;&#9679;&#9679;</span>
+    </div>
+    <div class="main-content">
+        <div class="left">
+            <div class="bank-section">
+                <div style="text-align:center; letter-spacing:1px; margin-bottom:10px;">
+                    PLEASE TRANSFER TO OUR OFFICIAL BANK ACCOUNT HERE
+                </div>
+                <button class="bank-btn">XXX-XXXXX-XXXXX-XXXX<br>ABCDE BANK</button>
+            </div>
+            <div class="touchngo-section">
+                <div style="text-align:center; letter-spacing:1px; margin-bottom:10px;">
+                    WE ALSO ACCEPT :
+                </div>
+                <button class="touchngo-btn">TOUCH N GO</button>
+            </div>
+            <div class="qr-section">
+                <div class="qr-label">OR SCAN THE QR BELOW :</div>
+                <div class="qr-placeholder">&#9632;&#9632;<br>&#9632;&#9632;</div>
+            </div>
+        </div>
+        <div class="right">
+            <div class="upload-label">
+                SAVE THE PAYMENT RECEIPT AND KINDLY UPLOAD IT HERE :
+            </div>
+            <div class="upload-section">
+                <div class="upload-section">
+    <input type="file" id="receipt" accept="image/*,application/pdf" required>
+    <button class="complete-btn" id="completeBtn" disabled>Complete Payment</button>
+    <div id="uploadStatus"></div>
+</div>
+        </div>
+    </div>
+    <script>
+const receiptInput = document.getElementById('receipt');
+const completeBtn = document.getElementById('completeBtn');
+const uploadStatus = document.getElementById('uploadStatus');
+let fileUploaded = false;
+
+receiptInput.addEventListener('change', function() {
+    completeBtn.disabled = !this.files.length;
+    fileUploaded = false;
+    uploadStatus.textContent = '';
+});
+
+completeBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    if (!receiptInput.files.length) return;
+
+    const formData = new FormData();
+    formData.append('receipt', receiptInput.files[0]);
+
+    fetch('http://localhost:3000/upload', {
+        method: 'POST',
+        body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+        uploadStatus.textContent = data.message;
+        fileUploaded = true;
+        // Redirect after a short delay
+        setTimeout(() => window.location.href = 'home.html', 1500);
+    })
+    .catch(() => {
+        uploadStatus.textContent = 'Upload failed. Please try again.';
+    });
+});
+</script>
+</body>
+</html>
