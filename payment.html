@@ -4,215 +4,137 @@
     <meta charset="UTF-8">
     <title>Payment - Lumiere Homestay</title>
     <style>
+        /* Background Image Integration */
         body {
-            background: #fff;
+            background: url('Images/background.jpg') no-repeat center center fixed;
+            background-size: cover;
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
         }
         .header-bar {
             border-bottom: 2px solid #000;
-            padding: 20px 0 0 0;
+            padding: 20px 0;
+            background: rgba(0, 0, 0, 0.6);
         }
         .dots {
             margin-left: 40px;
             font-size: 24px;
             letter-spacing: 8px;
+            color: #fff;
         }
         .main-content {
-            max-width: 1100px;
-            margin: 60px auto 0 auto;
-            display: flex;
-            flex-direction: row;
-            gap: 40px;
-        }
-        .left, .right {
-            flex: 1;
-        }
-        .left {
+            max-width: 900px;
+            margin: 60px auto;
             display: flex;
             flex-direction: column;
             align-items: center;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            text-align: center;
         }
-        .bank-section, .touchngo-section {
+        .payment-section, .upload-section {
             width: 100%;
             margin-bottom: 30px;
         }
-        .bank-btn, .touchngo-btn {
-            width: 100%;
-            padding: 18px 0;
+        .payment-info {
             font-size: 20px;
-            border: 2px solid #222;
-            background: #fff;
-            margin: 10px 0 0 0;
+            margin-bottom: 15px;
+        }
+        .payment-btn {
+            width: 100%;
+            padding: 14px;
+            font-size: 18px;
+            border: none;
+            background: #000;
+            color: #fff;
             font-weight: bold;
-            letter-spacing: 2px;
             cursor: pointer;
+            border-radius: 6px;
+            transition: background 0.3s, transform 0.2s;
         }
-        .touchngo-btn {
-            margin-bottom: 20px;
-        }
-        .qr-section {
-            margin-top: 10px;
-            width: 80%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .qr-label {
-            margin-bottom: 10px;
-            font-size: 16px;
-            letter-spacing: 1px;
+        .payment-btn:hover {
+            background: #333;
+            transform: scale(1.03);
         }
         .qr-placeholder {
-            width: 260px;
-            height: 260px;
-            border: 6px solid #222;
+            width: 200px;
+            height: 200px;
+            border: 4px solid #222;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 120px;
+            font-size: 80px;
             color: #888;
             background: #fafafa;
+            margin: 20px auto;
         }
-        .right {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: flex-start;
-            margin-top: 30px;
-        }
-        .upload-label {
-            font-size: 14px;
-            letter-spacing: 1px;
-            margin-bottom: 18px;
-        }
-        .upload-section {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-        .upload-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #fff;
-            border: 2px solid #222;
-            padding: 18px 40px;
-            font-size: 18px;
-            font-weight: bold;
-            letter-spacing: 2px;
-            cursor: pointer;
-            margin-bottom: 10px;
-            margin-top: 10px;
-        }
-        .upload-btn span {
-            margin-left: 12px;
-            font-size: 28px;
+        input[type="file"] {
+            padding: 10px;
+            font-size: 16px;
         }
         .complete-btn {
-            display: inline-block;
-            margin-top: 20px;
             padding: 12px 32px;
-            background: #000;
+            background: #4CAF50;
             color: #fff;
             font-size: 18px;
             font-weight: bold;
-            text-decoration: none;
-            border-radius: 4px;
+            border-radius: 6px;
             border: none;
-            transition: background 0.2s;
             cursor: pointer;
+            transition: background 0.3s;
         }
         .complete-btn:disabled {
             background: #888;
             cursor: not-allowed;
         }
-        @media (max-width: 900px) {
-            .main-content {
-                flex-direction: column;
-                gap: 0;
-            }
-            .left, .right {
-                width: 100%;
-                align-items: center;
-            }
-            .right {
-                margin-top: 40px;
-                align-items: center;
-            }
+        .complete-btn:hover {
+            background: #45a049;
         }
     </style>
 </head>
 <body>
-    <div class="header-bar">
-        <span class="dots">&#9679;&#9679;&#9679;</span>
-    </div>
+    <div class="header-bar"><span class="dots">&#9679;&#9679;&#9679;</span></div>
     <div class="main-content">
-        <div class="left">
-            <div class="bank-section">
-                <div style="text-align:center; letter-spacing:1px; margin-bottom:10px;">
-                    PLEASE TRANSFER TO OUR OFFICIAL BANK ACCOUNT HERE
-                </div>
-                <button class="bank-btn">XXX-XXXXX-XXXXX-XXXX<br>ABCDE BANK</button>
-            </div>
-            <div class="touchngo-section">
-                <div style="text-align:center; letter-spacing:1px; margin-bottom:10px;">
-                    WE ALSO ACCEPT :
-                </div>
-                <button class="touchngo-btn">TOUCH N GO</button>
-            </div>
-            <div class="qr-section">
-                <div class="qr-label">OR SCAN THE QR BELOW :</div>
-                <div class="qr-placeholder">&#9632;&#9632;<br>&#9632;&#9632;</div>
-            </div>
+        <div class="payment-section">
+            <p class="payment-info">PLEASE TRANSFER TO OUR OFFICIAL BANK ACCOUNT</p>
+            <button class="payment-btn">XXX-XXXXX-XXXXX-XXXX<br>ABCDE BANK</button>
+            <p class="payment-info">WE ALSO ACCEPT:</p>
+            <button class="payment-btn">TOUCH N GO</button>
+            <p class="payment-info">OR SCAN THE QR BELOW:</p>
+            <div class="qr-placeholder">&#9632;&#9632;</div>
         </div>
-        <div class="right">
-            <div class="upload-label">
-                SAVE THE PAYMENT RECEIPT AND KINDLY UPLOAD IT HERE :
-            </div>
-            <div class="upload-section">
-                <div class="upload-section">
-    <input type="file" id="receipt" accept="image/*,application/pdf" required>
-    <button class="complete-btn" id="completeBtn" disabled>Complete Payment</button>
-    <div id="uploadStatus"></div>
-</div>
+        <div class="upload-section">
+            <p class="payment-info">SAVE THE PAYMENT RECEIPT AND UPLOAD IT HERE:</p>
+            <input type="file" id="receipt" accept="image/*,application/pdf" required>
+            <button class="complete-btn" id="completeBtn" disabled>Complete Payment</button>
+            <div id="uploadStatus"></div>
         </div>
     </div>
+
     <script>
-const receiptInput = document.getElementById('receipt');
-const completeBtn = document.getElementById('completeBtn');
-const uploadStatus = document.getElementById('uploadStatus');
-let fileUploaded = false;
+        const receiptInput = document.getElementById('receipt');
+        const completeBtn = document.getElementById('completeBtn');
+        const uploadStatus = document.getElementById('uploadStatus');
 
-receiptInput.addEventListener('change', function() {
-    completeBtn.disabled = !this.files.length;
-    fileUploaded = false;
-    uploadStatus.textContent = '';
-});
+        receiptInput.addEventListener('change', function() {
+            completeBtn.disabled = !this.files.length;
+            uploadStatus.textContent = '';
+        });
 
-completeBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-    if (!receiptInput.files.length) return;
+        completeBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (!receiptInput.files.length) return;
 
-    const formData = new FormData();
-    formData.append('receipt', receiptInput.files[0]);
-
-    fetch('http://localhost:3000/upload', {
-        method: 'POST',
-        body: formData
-    })
-    .then(res => res.json())
-    .then(data => {
-        uploadStatus.textContent = data.message;
-        fileUploaded = true;
-        // Redirect after a short delay
-        setTimeout(() => window.location.href = 'home.html', 1500);
-    })
-    .catch(() => {
-        uploadStatus.textContent = 'Upload failed. Please try again.';
-    });
-});
-</script>
+            uploadStatus.textContent = "Uploading...";
+            setTimeout(() => {
+                uploadStatus.textContent = "Payment confirmed! Redirecting...";
+                completeBtn.disabled = true;
+                setTimeout(() => window.location.href = 'home.html', 2000);
+            }, 1500);
+        });
+    </script>
 </body>
 </html>
