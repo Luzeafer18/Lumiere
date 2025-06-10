@@ -11,7 +11,7 @@ const firebaseConfig = {
   authDomain: "lumiere-homestay.firebaseapp.com",
   databaseURL: "https://lumiere-homestay-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "lumiere-homestay",
-  storageBucket: "lumiere-homestay.firebasestorage.app",
+  storageBucket: "lumiere-homestay.appspot.com",
   messagingSenderId: "92429711194",
   appId: "1:92429711194:web:4c1d725a1bc9322f52a563",
   measurementId: "G-BZYY03H094"

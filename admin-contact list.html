@@ -79,51 +79,52 @@
             background: #fff;
             height: 60px;
         }
-        /* Mobile Responsive Adjustments */
-        @media (max-width: 600px) {
-            .table-container {
-                width: 95%;
-                padding: 15px;
-            }
-            table {
-                font-size: 18px;
-            }
-            .admin-nav {
-                flex-direction: column;
-                width: 80%;
-                text-align: center;
-            }
-        }
     </style>
 </head>
 <body>
     <div class="header-bar"><span class="dots">&#9679;&#9679;&#9679;</span></div>
     <div class="admin-title">ADMIN</div>
     <div class="admin-nav">
-        <a href="admin-booking.html">BOOKING LIST</a>
-        <a href="admin-contact.html" class="active">CONTACT LIST</a>
+        <a href="admin-booking list.html">BOOKING LIST</a>
+        <a href="admin-contact list.html" class="active">CONTACT LIST</a>
     </div>
     <div class="table-container">
-        <table>
-            <tr>
-                <th>NAME</th>
-                <th>EMAIL</th>
-                <th>PHONE</th>
-                <th>CUSTOMER MESSAGE</th>
-            </tr>
-            <tr>
-                <td></td><td></td><td></td><td></td>
-            </tr>
-            <tr>
-                <td></td><td></td><td></td><td></td>
-            </tr>
-            <tr>
-                <td></td><td></td><td></td><td></td>
-            </tr>
-            <tr>
-                <td></td><td></td><td></td><td></td>
-            </tr>
+        <table id="contactTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Message</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Messages will be loaded dynamically here -->
+            </tbody>
         </table>
     </div>
+
+    <!-- Load Firebase and Display Messages -->
+    <script type="module">
+        import { getMessages } from "./firebase.js";
+
+        function displayMessages(messages) {
+            const tableBody = document.querySelector("#contactTable tbody");
+            tableBody.innerHTML = ""; // Clear existing rows
+
+            Object.values(messages).forEach(msg => {
+                let row = `<tr>
+                    <td>${msg.name}</td>
+                    <td>${msg.email}</td>
+                    <td>${msg.phone}</td>
+                    <td>${msg.message}</td>
+                </tr>`;
+                tableBody.innerHTML += row;
+            });
+        }
+
+        // Fetch messages and update table
+        getMessages(displayMessages);
+    </script>
 </body>
 </html>
