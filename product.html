@@ -4,129 +4,200 @@
     <meta charset="UTF-8">
     <title>Product - Lumiere Homestay</title>
     <style>
-       body {
-    background: url('Images/background.jpg') no-repeat center center fixed;
-    background-size: cover;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+        body {
+            background: url('Images/background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
 
-        }
-        .header-bar {
-            border-bottom: 2px solid #000;
-            padding: 20px 0 0 0;
-        }
-        .dots {
-            margin-left: 40px;
-            font-size: 24px;
-            letter-spacing: 8px;
-        }
         .nav-bar {
-    display: flex;
-    gap: 30px;
-    font-size: 20px;
-    letter-spacing: 2px;
-    border-bottom: 6px solid #000;
-    padding: 12px 0 12px 40px;
-    background: #fff;
-}
-.nav-bar a {
-    color: #000;
-    text-decoration: none;
-    font-weight: normal;
-    padding-bottom: 2px;
-}
-.nav-bar a.active {
-    font-weight: bold;
-    text-decoration: underline;
-    text-underline-offset: 4px;
-}
-        .nav-menu {
             display: flex;
-            justify-content: flex-start;
             gap: 30px;
-            padding: 12px 0 12px 40px;
             font-size: 20px;
             letter-spacing: 2px;
+            border-bottom: 6px solid #000;
+            padding: 12px 0 12px 40px;
+            background: #fff;
         }
-        .nav-menu a {
+
+        .nav-bar a {
             color: #000;
             text-decoration: none;
             font-weight: normal;
+            padding-bottom: 2px;
         }
-        .nav-menu a.active {
+
+        .nav-bar a.active {
             font-weight: bold;
             text-decoration: underline;
+            text-underline-offset: 4px;
         }
-     .products-container {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
-    margin-top: 60px;
-}
 
-.product-card {
-    width: 300px; /* Slightly larger */
-    text-align: center;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
+        .products-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 60px;
+        }
 
-.product-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
-}
+        .product-card {
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
 
-.product-card:hover img {
-    transform: scale(1.1); /* Zoom-in effect */
-    filter: brightness(110%); /* Slight brightness increase */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Enhanced shadow */
-}
+        .product-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+        }
 
-.product-card p {
-    font-size: 16px;
-    margin-top: 10px;
-    color: #222;
-}
+        .product-card:hover img {
+            transform: scale(1.1);
+            filter: brightness(110%);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+        }
 
+        .package-section {
+            text-align: center;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.9);
+            margin-top: 50px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
-        
-  
+        .description {
+            font-size: 16px;
+            font-weight: 500;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .package {
+            display: inline-block;
+            width: 250px;
+            margin: 15px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .package h3 {
+            color: #333;
+        }
+
+        .package p {
+            font-size: 20px;
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        /* Flashing Limited Offer */
+        .limited-offer {
+            font-size: 18px;
+            font-weight: bold;
+            color: #ff0000;
+            margin-top: 20px;
+            animation: flash 1s infinite alternate;
+        }
+
+        @keyframes flash {
+            0% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
+
+        /* Book Now Button */
+        .book-now {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 24px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #ffffff;
+            background-color: #007bff;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+        }
+
+        .book-now:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .package-section {
+                padding: 20px;
+            }
+
+            .package {
+                display: block;
+                width: 90%;
+                margin: 10px auto;
+            }
+
+            .limited-offer {
+                font-size: 16px;
+            }
+        }
     </style>
 </head>
 <body>
 
     <div class="nav-bar">
-        <div class="nav-menu">
-            <a href="index.html">HOME</a>
-<a href="about.html">ABOUT US</a>
-<a href="product.html" class="active">PRODUCT</a>
-<a href="booking.html">BOOKING</a>
-<a href="contact.html">CONTACT</a>
+        <a href="index.html">HOME</a>
+        <a href="about.html">ABOUT US</a>
+        <a href="product.html" class="active">PRODUCT</a>
+        <a href="booking.html">BOOKING</a>
+        <a href="contact.html">CONTACT</a>
+    </div>
 
+    <div class="products-container">
+        <div class="product-card">
+            <img src="Product/Product 1.jpg" alt="Cozy Deluxe Room">
+            <p>This bedroom embodies the cozy Kampung vibe with its warm wooden walls, high ceilings, and soft natural light. Rustic decor and woven accents create a serene retreat, blending tradition with comfort. Perfect for a peaceful getaway..</p>
+        </div>
+        <div class="product-card">
+            <img src="Product/Product 2.jpg" alt="Seaside View Suite">
+            <p>This living room radiates a warm Kampung charm with its rich wooden interiors, intricate carvings, and cozy wicker seating. Soft lighting and rustic décor create an inviting space, perfect for relaxation and connection. A beautiful blend of tradition and comfort.</p>
+        </div>
+        <div class="product-card">
+            <img src="Product/Product 3.jpg" alt="Tranquil Garden Space">
+
+            <p>This Kampung-style kitchen exudes warmth and tradition with its rustic wooden cabinetry, high-beamed ceiling, and earthy tones. The spacious layout, featuring a central island and large windows, invites natural light and a welcoming ambiance. A perfect blend of functionality and charm.</p>
+        </div>
+        <div class="product-card">
+            <img src="Product/Product 4.jpg" alt="Elegant Dining Area">
+            <p>This Kampung-style bedroom showcases warm wooden walls, exposed beams, and traditional decor. Soft lighting and natural textures create a cozy, nostalgic retreat, perfect for a peaceful stay. Simple yet inviting, it blends rustic charm with comfort.</p>
         </div>
     </div>
-    <div class="products-container">
-    <div class="product-card">
-        <img src="Product/Product 1.jpg" alt="Cozy Deluxe Room">
-        <p>Cozy Deluxe Room – Perfect for relaxation.</p>
+
+    <div class="package-section">
+        <h2>Our Stay Packages</h2>
+        <p class="description">We offer the best Kampung Vibe with modern comfort, especially for family gatherings. Grab this opportunity now before its too late</p>
+
+        <div class="package">
+            <h3>1-Night Stay</h3>
+            <p>RM 119</p>
+        </div>
+        <div class="package">
+            <h3>3 Days, 2 Nights</h3>
+            <p>RM 359</p>
+        </div>
+
+        <p class="limited-offer">Limited Offer</p>
+
+        <!-- Booking Button -->
+        <a href="booking.html" class="book-now">Book Now</a>
     </div>
-    <div class="product-card">
-        <img src="Product/Product 2.jpg" alt="Seaside View Suite">
-        <p>Seaside View Suite – Enjoy the breathtaking scenery.</p>
-    </div>
-    <div class="product-card">
-        <img src="Product/Product 3.jpg" alt="Tranquil Garden Space">
-        <p>Tranquil Garden Space – A peaceful retreat.</p>
-    </div>
-    <div class="product-card">
-        <img src="Product/Product 4.jpg" alt="Elegant Dining Area">
-        <p>Elegant Dining Area – Savor delicious meals.</p>
-    </div>
-</div>
 
 </body>
 </html>

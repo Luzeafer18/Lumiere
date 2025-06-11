@@ -10,12 +10,21 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            filter: blur(10px);
+            opacity: 0;
+            transition: filter 0.5s ease-in-out, opacity 0.5s ease-in-out;
+        }
+
+        /* Apply the transition effect when the page loads */
+        body.loaded {
+            filter: blur(0px);
+            opacity: 1;
         }
 
         .nav-bar {
             display: flex;
             gap: 30px;
-            font-size: 22px; /* Slightly bigger */
+            font-size: 22px;
             letter-spacing: 2px;
             border-bottom: 6px solid #000;
             padding: 14px 0;
@@ -114,6 +123,9 @@
         <div class="welcome-text">
             <h1>WELCOME TO LUMIERE HOMESTAY</h1>
             <p>Discover an oasis of comfort and tranquility at Lumiere Homestay. Designed for relaxation, adventure, and unforgettable experiences, our homestay offers premium spaces tailored for your perfect getaway.</p>
+            <p>Discover a unique and rare gem in the heart of the city a Kampung haven designed for those who crave the warmth and simplicity of traditional village life. Lumiere Homestay brings you an authentic Kampung vibe, even amidst the urban buzz, offering an experience that is both special and refreshing. Every detail is carefully curated to evoke the spirit of Kampung living, from the rustic décor to the naturally lit spaces that create an atmosphere of calm and familiarity.</p>
+            <p> Here, you can cure that deep nostalgia for simpler times. Whether it’s the hand-crafted accents, the earthy tones splashed across your surroundings, or the gently echoing sounds of nature, Lumiere Homestay is a rare experience that feels like a warm embrace, even in a big city. We’ve blended modern amenities with traditional charm to create a sanctuary where you can relax, recharge, and feel right at home. </p>
+            <p>Step into a world where every moment is designed to remind you of the genuine connections, the comfort of a close-knit community, and the rich heritage of Kampung living. Lumiere Homestay isn’t just another urban retreat—it’s a special escape for anyone seeking to recapture the essence of home, far from the relentless pace of city life. Welcome to your unique urban Kampung experience!</p>
         </div>
         <div class="image-container">
             <img src="Product/Home.jpg" alt="Lumiere Homestay">
@@ -124,7 +136,11 @@
     <a href="admin.html" id="admin-btn" class="admin-btn">Admin Panel</a>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
+            // Apply blur reveal effect when the page loads
+            document.body.classList.add("loaded");
+
+            // Show admin button only on index.html
             if (window.location.pathname.includes("index.html")) {
                 document.getElementById("admin-btn").style.display = "block";
             }
