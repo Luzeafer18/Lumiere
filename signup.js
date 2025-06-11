@@ -9,9 +9,9 @@ document.getElementById("signupForm").addEventListener("submit", (e) => {
     createUserWithEmailAndPassword(auth, email, password)
         .then(() => {
             alert("Sign-up successful! Redirecting to login...");
-            window.location.href = "index.html"; // Redirect to login
+            window.location.href = "index.html"; // Redirect to login page
         })
         .catch((error) => {
-            alert(error.message); // Display Firebase error messages
+            alert(error.message);
         });
 });

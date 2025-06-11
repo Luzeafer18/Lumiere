@@ -5,8 +5,138 @@
     <title>Sign Up</title>
     <script type="module" src="signup.js"></script> <!-- Load signup.js -->
     <style>
-        /* Your existing styles */
-    </style>
+  /* General body styling */
+  body {
+    background: url('Images/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Centers content vertically */
+  }
+
+  .container {
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  h1 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  .subtitle {
+    color: #555;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  label {
+    text-align: left;
+    font-size: 14px;
+    color: #222;
+    font-weight: bold;
+  }
+
+  input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1.5px solid #222;
+    border-radius: 5px;
+    outline: none;
+    width: 100%;
+    transition: border 0.2s, box-shadow 0.2s;
+  }
+
+  input:focus {
+    border-color: #4a6ee0;
+    box-shadow: 0 0 5px rgba(74, 110, 224, 0.3);
+  }
+
+  .roles {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #222;
+    margin-top: 10px;
+  }
+
+  .login-btn {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 12px 0;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+    border-radius: 5px;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .login-btn:hover {
+    background: #333;
+    transform: scale(1.02);
+  }
+
+  .signup-link {
+    font-size: 14px;
+    color: #222;
+    margin-top: 20px;
+  }
+
+  .signup-link a {
+    color: #4a6ee0;
+    text-decoration: underline;
+  }
+
+  /* Mobile responsiveness */
+  @media (max-width: 600px) {
+    .container {
+      width: 90%;
+      padding: 25px;
+    }
+
+    h1 {
+      font-size: 28px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+    }
+
+    label {
+      font-size: 12px;
+    }
+
+    input {
+      font-size: 14px;
+      padding: 8px;
+    }
+
+    .login-btn {
+      font-size: 16px;
+      padding: 10px;
+    }
+  }
+</style>
+
 </head>
 <body>
     <div class="container">
