@@ -4,61 +4,133 @@
     <meta charset="UTF-8">
     <title>Admin - Lumiere Homestay</title>
     <style>
+        /* Background & Layout */
         body {
-            background: #fff;
+            background: url('Images/background.jpg') no-repeat center center fixed;
+            background-size: cover;
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            text-align: center;
         }
         .header-bar {
             border-bottom: 2px solid #000;
-            padding: 20px 0 0 0;
-        }
-        .dots {
-            margin-left: 40px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
             font-size: 24px;
-            letter-spacing: 8px;
+            font-weight: bold;
         }
         .admin-title {
             font-size: 48px;
             font-weight: bold;
-            margin: 40px 0 0 60px;
+            margin: 40px 0 20px;
             letter-spacing: 2px;
+            color: #fff;
         }
         .admin-nav {
             display: flex;
+            justify-content: center;
             gap: 40px;
-            margin: 30px 0 0 60px;
+            margin: 30px auto;
             font-size: 22px;
             letter-spacing: 2px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 12px;
+            border-radius: 8px;
+            width: 60%;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
         }
         .admin-nav a {
             color: #000;
             text-decoration: none;
-            font-weight: normal;
+            padding: 8px 16px;
+            border-radius: 5px;
+            transition: background 0.3s, color 0.3s;
         }
-        .admin-nav a.active {
+        .admin-nav a:hover, .admin-nav a.active {
+            background: #000;
+            color: #fff;
             font-weight: bold;
-            text-decoration: underline;
         }
-        .main-content {
-            margin: 80px 0 0 60px;
+
+        /* Formspree Admin Access */
+        .formspree-container {
+            margin: 50px auto;
+            max-width: 500px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+        .formspree-btn {
+            display: inline-block;
+            font-size: 22px;
+            padding: 14px 25px;
+            border-radius: 6px;
+            background: #007bff;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .formspree-btn:hover {
+            background: #0056b3;
+            transform: scale(1.05);
+        }
+
+        /* Security Notice */
+        .warning-container {
+            margin-top: 20px;
             font-size: 18px;
-            letter-spacing: 2px;
+            font-weight: bold;
+            color: #c00;
+            padding: 15px;
+            border-radius: 8px;
+            background: rgba(255, 0, 0, 0.1);
+            border: 2px solid #c00;
+            display: inline-block;
+        }
+        .warning-container::before {
+            content: "⚠ ";
+            font-size: 22px;
+        }
+        
+        /* Mobile Responsive Adjustments */
+        @media (max-width: 600px) {
+            .admin-nav {
+                flex-direction: column;
+                width: 80%;
+                text-align: center;
+            }
+            .formspree-container {
+                width: 90%;
+                padding: 15px;
+            }
+            .formspree-btn {
+                font-size: 18px;
+                padding: 12px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="header-bar">
-        <span class="dots">&#9679;&#9679;&#9679;</span>
-    </div>
-    <div class="admin-title">ADMIN</div>
+    <div class="header-bar">Admin Panel - Lumiere Homestay</div>
+    <div class="admin-title">ADMIN DASHBOARD</div>
     <div class="admin-nav">
-        <a href="#">BOOKING LIST</a>
-        <a href="#">CONTACT LIST</a>
+        <button id="logout">Log Out</button>
+
+
     </div>
-    <div class="main-content">
-        WELCOME TO ADMIN PAGE. THIS PAGE IS FOR ADMIN ONLY.
+
+    <div class="formspree-container">
+        <a class="formspree-btn" href="https://formspree.io/dashboard" target="_blank">Access Formspree Dashboard</a>
+        <div class="warning-container">
+            Only admins registered to this business can access this data.
+        </div>
     </div>
+
+    <script type="module" src="admin.js"></script>
+
 </body>
 </html>
