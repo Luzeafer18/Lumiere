@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Booking - Lumiere Homestay</title>
+    <title>Booking & Payment - Lumiere Homestay</title>
     <style>
         body {
             background: url('Images/background.jpg') no-repeat center center fixed;
@@ -35,7 +35,7 @@
 
         .main-container {
             max-width: 800px;
-            margin: 80px auto;
+            margin: 50px auto;
             padding: 30px;
             background: rgba(255, 255, 255, 0.95);
             border-radius: 10px;
@@ -69,8 +69,8 @@
             border-radius: 6px;
         }
 
-        .confirm-btn {
-            background: #000;
+        .confirm-btn, .pay-btn {
+            background: #007bff;
             color: #fff;
             font-size: 20px;
             padding: 12px;
@@ -80,14 +80,73 @@
             transition: background 0.3s ease;
         }
 
-        .confirm-btn:hover {
-            background: #333;
+        .confirm-btn:hover, .pay-btn:hover {
+            background: #0056b3;
         }
 
-        .note {
-            font-size: 16px;
+        .payment-section {
+            margin-top: 30px;
+            padding: 20px;
+            border-top: 2px solid #222;
+            text-align: center;
+        }
+
+        .bank-qr-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .bank-details {
+            flex: 1;
+            text-align: left;
+        }
+
+        .bank-btn {
+            width: 100%;
+            padding: 14px;
+            font-size: 20px;
+            font-weight: bold;
+            border: 2px solid #222;
+            background: #000;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: background 0.3s ease, transform 0.2s ease-in-out;
+        }
+
+        .bank-btn:hover {
+            background: #333;
+            transform: scale(1.05);
+        }
+
+        .qr-section {
+            flex: 1;
+            text-align: right;
+        }
+
+        .qr-image {
+            width: 240px;
+            height: 240px;
+            border-radius: 8px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .form-btn {
+            display: block;
+            background: #007bff;
+            color: #fff;
+            font-size: 20px;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background 0.3s ease;
             margin-top: 20px;
-            color: #222;
+        }
+
+        .form-btn:hover {
+            background: #0056b3;
         }
     </style>
 </head>
@@ -101,8 +160,10 @@
     </div>
 
     <div class="main-container">
-        <h1>BOOK NOW</h1>
-        <form action="https://formspree.io/f/mrbkpnlg" method="POST">
+        <h1>BOOK & PAY NOW</h1>
+
+        <!-- Booking Form -->
+        <form id="bookingForm" action="https://formspree.io/f/mrbkpnlg" method="POST">
             <label for="name">NAME</label>
             <input type="text" id="name" name="name" required>
 
@@ -121,8 +182,24 @@
             <button class="confirm-btn" type="submit">CONFIRM BOOKING</button>
         </form>
 
-        <div class="note">
-            AFTER CONFIRMING YOUR BOOKING, YOU WILL BE ASKED TO MAKE A PAYMENT AS A DEPOSIT.
+        <!-- Payment Section -->
+        <div class="payment-section">
+            <h2>Complete Your Payment</h2>
+            <p>After confirming your booking, please proceed with payment.</p>
+
+            <div class="bank-qr-section">
+                <div class="bank-details">
+                    <h2>Bank Transfer Details</h2>
+                    <button class="bank-btn">9999-99999-99999-9999<br> BANK SIMPANAN NASIONAL</button>
+                    <p>Use 1DRM119 as a reference for 1 Night stay, 3D2NRM359 for 3 Days 2 Night </p>
+                </div>
+                <div class="qr-section">
+                    <h2>Scan QR Code to Pay</h2>
+                    <img src="Payment/Qr code.jpg" alt="QR Code for Payment" class="qr-image">
+                </div>
+            </div>
+
+            <a href="https://forms.gle/nZQsuRF7xvxex4hK9" class="form-btn">Upload Payment Receipt</a>
         </div>
     </div>
 </body>

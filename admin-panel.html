@@ -36,8 +36,14 @@
             color: #222;
         }
 
-        .formspree-btn {
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
             margin-top: 20px;
+        }
+
+        .formspree-btn, .google-sheet-btn {
             background: #007bff;
             color: #fff;
             font-size: 20px;
@@ -47,7 +53,7 @@
             transition: background 0.3s ease;
         }
 
-        .formspree-btn:hover {
+        .formspree-btn:hover, .google-sheet-btn:hover {
             background: #0056b3;
         }
 
@@ -89,7 +95,11 @@
         <p>Welcome, Admin! Please review submissions and manage bookings.</p>
         <p>Click the button below to access payment receipt, booking and contact list submissions.</p>
 
-        <a href="https://formspree.io/forms" class="formspree-btn">Go to Formspree</a>
+        <div class="button-container">
+            <a href="https://formspree.io/forms" class="formspree-btn">Go to Formspree</a>
+            <a href="https://docs.google.com/spreadsheets/d/1Fi_iWy3XFPUfFae_D7pZpikJEmfLtqAp6l2fLIO1NZw/edit?usp=sharing" class="google-sheet-btn">Go to Google Sheets</a>
+        </div>
+
         <a href="index.html" class="home-btn">Back to Home</a>
 
         <div class="images-section">
