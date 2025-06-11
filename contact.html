@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Contact - Lumiere Homestay</title>
+    <title>Booking - Lumiere Homestay</title>
     <style>
         /* Background Image Integration */
         body {
@@ -41,7 +41,7 @@
             text-decoration: underline;
         }
         .main-content {
-            max-width: 500px;
+            max-width: 900px;
             margin: 60px auto;
             background: rgba(255, 255, 255, 0.9);
             padding: 40px;
@@ -49,62 +49,33 @@
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
         }
         form {
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
+            display: grid;
+            gap: 24px;
         }
         label {
-            text-align: left;
-            font-size: 13px;
-            letter-spacing: 2px;
-            color: #222;
-            margin-bottom: 5px;
+            font-size: 18px;
+            font-weight: bold;
         }
-        input[type="email"], input[type="text"], textarea {
+        input, textarea, button {
+            font-size: 18px;
             padding: 10px;
-            font-size: 16px;
-            border: 1.5px solid #222;
-            outline: none;
-            width: 100%;
-            box-sizing: border-box;
-            border-radius: 4px;
         }
-        textarea {
-            min-height: 80px;
-            resize: vertical;
-        }
-        .submit-btn {
+        .confirm-btn {
             background: #000;
             color: #fff;
             padding: 14px;
             font-size: 20px;
             cursor: pointer;
-            border-radius: 5px;
-            transition: background 0.2s, transform 0.2s;
+            transition: background 0.2s;
+            border: none;
         }
-        .submit-btn:hover {
+        .confirm-btn:hover {
             background: #333;
-            transform: scale(1.02);
         }
         .note {
             margin-top: 20px;
-            font-size: 14px;
-            color: #222;
-            text-align: center;
-        }
-        .logout-btn {
-            margin-left: 30px;
-            color: #c00;
-            font-weight: bold;
-            text-decoration: none;
-            border: 2px solid #c00;
-            padding: 4px 18px;
-            border-radius: 4px;
-            transition: background 0.2s, color 0.2s;
-        }
-        .logout-btn:hover {
-            background: #c00;
-            color: #fff;
+            font-size: 16px;
+            font-style: italic;
         }
     </style>
 </head>
@@ -116,49 +87,33 @@
         <a href="home.html">HOME</a>
         <a href="about.html">ABOUT US</a>
         <a href="product.html">PRODUCT</a>
-        <a href="booking.html">BOOKING</a>
-        <a href="contact.html" class="active">CONTACT</a>
+        <a href="booking.html" class="active">BOOKING</a>
+        <a href="contact.html">CONTACT</a>
         <a href="index.html" class="logout-btn">LOG OUT</a>
     </div>
     <div class="main-content">
-        <h1>CONTACT US</h1>
-        <form id="contactForm">
+        <h1>BOOK NOW</h1>
+        <form id="bookingForm" action="https://formspree.io/f/xblygnkl" method="POST">
             <label for="name">NAME</label>
             <input type="text" id="name" name="name" required>
+            
             <label for="email">EMAIL</label>
             <input type="email" id="email" name="email" required>
-            <label for="phone">PHONE</label>
-            <input type="text" id="phone" name="phone" required>
-            <label for="message">YOUR MESSAGE</label>
-            <textarea id="message" name="message" required></textarea>
-            <button class="submit-btn" type="submit">SUBMIT MESSAGE</button>
+            
+            <label for="checkin">CHECK-IN</label>
+            <input type="date" id="checkin" name="checkin" required>
+            
+            <label for="checkout">CHECK-OUT</label>
+            <input type="date" id="checkout" name="checkout" required>
+            
+            <!-- This hidden input tells Formspree where to redirect after submission -->
+            <input type="hidden" name="_next" value="payment.html">
+            
+            <button class="confirm-btn" type="submit">CONFIRM BOOKING</button>
         </form>
         <div class="note">
-            BY FILLING THIS FORM, WE ASSUME THAT YOU AGREE TO SHARE YOUR PERSONAL INFORMATION WITH US.
+            AFTER CONFIRM BOOKING, YOU WILL BE ASKED TO MAKE PAYMENT AS DEPOSIT.
         </div>
     </div>
-
-    <!-- Import Firebase Module -->
-    <script type="module">
-        import { saveContact } from "./firebase.js";
-
-        document.getElementById("contactForm").onsubmit = function(e) {
-            e.preventDefault();
-
-            const contactData = {
-                name: document.getElementById("name").value,
-                email: document.getElementById("email").value,
-                phone: document.getElementById("phone").value,
-                message: document.getElementById("message").value
-            };
-
-            saveContact(contactData)
-                .then(() => {
-                    alert("Message sent successfully!");
-                    document.getElementById("contactForm").reset();
-                })
-                .catch(error => alert("Error sending message: " + error.message));
-        };
-    </script>
 </body>
 </html>
