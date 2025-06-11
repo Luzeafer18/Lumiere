@@ -2,135 +2,121 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Admin - Lumiere Homestay</title>
+    <title>Admin Login - Lumiere Homestay</title>
     <style>
-        /* Background & Layout */
         body {
             background: url('Images/background.jpg') no-repeat center center fixed;
             background-size: cover;
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            text-align: center;
-        }
-        .header-bar {
-            border-bottom: 2px solid #000;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.6);
-            color: #fff;
-            font-size: 24px;
-            font-weight: bold;
-        }
-        .admin-title {
-            font-size: 48px;
-            font-weight: bold;
-            margin: 40px 0 20px;
-            letter-spacing: 2px;
-            color: #fff;
-        }
-        .admin-nav {
             display: flex;
             justify-content: center;
-            gap: 40px;
-            margin: 30px auto;
-            font-size: 22px;
-            letter-spacing: 2px;
-            background: rgba(255, 255, 255, 0.8);
-            padding: 12px;
-            border-radius: 8px;
-            width: 60%;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            align-items: center;
+            height: 100vh;
         }
-        .admin-nav a {
-            color: #000;
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 5px;
-            transition: background 0.3s, color 0.3s;
+
+        .login-container {
+            width: 400px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
         }
-        .admin-nav a:hover, .admin-nav a.active {
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .warning-text {
+            color: red;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        label {
+            font-size: 16px;
+            display: block;
+            margin-top: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #222;
+            border-radius: 6px;
+        }
+
+        .login-btn {
             background: #000;
             color: #fff;
-            font-weight: bold;
-        }
-
-        /* Formspree Admin Access */
-        .formspree-container {
-            margin: 50px auto;
-            max-width: 500px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 10px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-        }
-        .formspree-btn {
-            display: inline-block;
-            font-size: 22px;
-            padding: 14px 25px;
-            border-radius: 6px;
-            background: #007bff;
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background 0.3s, transform 0.2s;
-        }
-        .formspree-btn:hover {
-            background: #0056b3;
-            transform: scale(1.05);
-        }
-
-        /* Security Notice */
-        .warning-container {
-            margin-top: 20px;
             font-size: 18px;
-            font-weight: bold;
-            color: #c00;
-            padding: 15px;
-            border-radius: 8px;
-            background: rgba(255, 0, 0, 0.1);
-            border: 2px solid #c00;
-            display: inline-block;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: background 0.3s ease;
+            margin-top: 20px;
         }
-        .warning-container::before {
-            content: "⚠ ";
-            font-size: 22px;
+
+        .login-btn:hover {
+            background: #333;
         }
-        
-        /* Mobile Responsive Adjustments */
-        @media (max-width: 600px) {
-            .admin-nav {
-                flex-direction: column;
-                width: 80%;
-                text-align: center;
-            }
-            .formspree-container {
-                width: 90%;
-                padding: 15px;
-            }
-            .formspree-btn {
-                font-size: 18px;
-                padding: 12px;
-            }
+
+        .home-btn {
+            display: block;
+            margin-top: 20px;
+            background: #000;
+            color: #fff;
+            font-size: 18px;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background 0.3s ease;
+        }
+
+        .home-btn:hover {
+            background: #333;
         }
     </style>
 </head>
 <body>
-    <div class="header-bar">Admin Panel - Lumiere Homestay</div>
-    <div class="admin-title">ADMIN DASHBOARD</div>
-    <div class="admin-nav">
-        <button id="logout">Log Out</button>
 
+    <div class="login-container">
+        <h1>Admin Login</h1>
+        <p class="warning-text">Only authorized admins can access this page.</p>
 
+        <form id="adminLogin">
+            <label for="username">Username</label>
+            <input type="text" id="username" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" required>
+
+            <button type="submit" class="login-btn">Login</button>
+        </form>
+
+        <a href="admin-panel.html" id="redirectLink" class="home-btn" style="display: none;">Proceed to Admin Panel</a>
+        <a href="index.html" class="home-btn">Back to Home</a>
     </div>
 
-    <div class="formspree-container">
-        <a class="formspree-btn" href="https://formspree.io/dashboard" target="_blank">Access Formspree Dashboard</a>
-        <div class="warning-container">
-            Only admins registered to this business can access this data.
-        </div>
-    </div>
+    <script>
+        document.getElementById("adminLogin").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
 
-    <script type="module" src="admin.js"></script>
+            if (username === "LumiereAdmin" && password === "Admin01") {
+                alert("Login successful!");
+                document.getElementById("redirectLink").style.display = "block";
+            } else {
+                alert("Incorrect login credentials. Access denied.");
+            }
+        });
+    </script>
 
 </body>
 </html>

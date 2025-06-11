@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Booking - Lumiere Homestay</title>
     <style>
-        /* Background Image Integration */
         body {
             background: url('Images/background.jpg') no-repeat center center fixed;
             background-size: cover;
@@ -12,128 +11,119 @@
             margin: 0;
             padding: 0;
         }
-        .header-bar {
-            border-bottom: 2px solid #000;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.6);
-            color: #fff;
-            font-size: 24px;
-            font-weight: bold;
-            text-align: center;
-        }
+
         .nav-bar {
             display: flex;
             gap: 30px;
             font-size: 20px;
             letter-spacing: 2px;
             border-bottom: 6px solid #000;
-            padding: 12px 40px;
-            background: rgba(255, 255, 255, 0.8);
+            padding: 12px 0;
+            background: #fff;
+            justify-content: center;
         }
+
         .nav-bar a {
             color: #000;
             text-decoration: none;
         }
+
         .nav-bar a.active {
             font-weight: bold;
             text-decoration: underline;
         }
-        .main-content {
-            max-width: 900px;
-            margin: 60px auto;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 40px;
+
+        .main-container {
+            max-width: 800px;
+            margin: 80px auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 10px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
             text-align: center;
         }
+
+        h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
         form {
-            display: grid;
-            gap: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            text-align: left;
         }
-        input, textarea, button {
+
+        label {
             font-size: 18px;
-            padding: 10px;
+            font-weight: bold;
+            margin-bottom: 5px;
         }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #222;
+            border-radius: 6px;
+        }
+
         .confirm-btn {
             background: #000;
             color: #fff;
-            padding: 14px;
             font-size: 20px;
-            cursor: pointer;
-            transition: background 0.2s;
+            padding: 12px;
             border: none;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: background 0.3s ease;
         }
+
         .confirm-btn:hover {
             background: #333;
         }
 
-        /* Styled Thank-You Pop-up */
-        .popup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(0, 128, 0, 0.9);
-            color: #fff;
-            padding: 20px;
-            font-size: 22px;
-            font-weight: bold;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            text-align: center;
-        }
-
-        .popup.show {
-            display: block;
+        .note {
+            font-size: 16px;
+            margin-top: 20px;
+            color: #222;
         }
     </style>
 </head>
 <body>
-    <div class="header-bar">Booking - Lumiere Homestay</div>
     <div class="nav-bar">
-        <a href="home.html">HOME</a>
+        <a href="index.html">HOME</a>
         <a href="about.html">ABOUT US</a>
         <a href="product.html">PRODUCT</a>
         <a href="booking.html" class="active">BOOKING</a>
         <a href="contact.html">CONTACT</a>
-        <a href="index.html" class="logout-btn">LOG OUT</a>
     </div>
-    <div class="main-content">
+
+    <div class="main-container">
         <h1>BOOK NOW</h1>
-        <form id="bookingForm" action="https://formspree.io/f/mrbkpnlg" method="POST">
+        <form action="https://formspree.io/f/mrbkpnlg" method="POST">
             <label for="name">NAME</label>
             <input type="text" id="name" name="name" required>
-            
+
+            <label for="phone">PHONE NUMBER</label>
+            <input type="text" id="phone" name="phone" required>
+
             <label for="email">EMAIL</label>
             <input type="email" id="email" name="email" required>
-            
+
             <label for="checkin">CHECK-IN</label>
             <input type="date" id="checkin" name="checkin" required>
-            
+
             <label for="checkout">CHECK-OUT</label>
             <input type="date" id="checkout" name="checkout" required>
-            
+
             <button class="confirm-btn" type="submit">CONFIRM BOOKING</button>
         </form>
+
         <div class="note">
-            AFTER CONFIRM BOOKING, YOU WILL BE ASKED TO MAKE PAYMENT AS DEPOSIT.
+            AFTER CONFIRMING YOUR BOOKING, YOU WILL BE ASKED TO MAKE A PAYMENT AS A DEPOSIT.
         </div>
     </div>
-
-    <!-- Thank-You Pop-up -->
-    <div id="thankYouPopup" class="popup">✅ Thank you for your booking! Redirecting to payment...</div>
-
-    <script>
-        document.getElementById('bookingForm').onsubmit = function(e) {
-            e.preventDefault();
-            document.getElementById('thankYouPopup').classList.add('show');
-            
-            setTimeout(() => {
-                window.location.href = 'payment.html';
-            }, 3000); // Redirect after 3 seconds
-        };
-    </script>
 </body>
 </html>

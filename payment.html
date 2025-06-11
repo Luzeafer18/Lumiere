@@ -4,137 +4,144 @@
     <meta charset="UTF-8">
     <title>Payment - Lumiere Homestay</title>
     <style>
-        /* Background Image Integration */
         body {
             background: url('Images/background.jpg') no-repeat center center fixed;
             background-size: cover;
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-        }
-        .header-bar {
-            border-bottom: 2px solid #000;
-            padding: 20px 0;
-            background: rgba(0, 0, 0, 0.6);
-        }
-        .dots {
-            margin-left: 40px;
-            font-size: 24px;
-            letter-spacing: 8px;
-            color: #fff;
-        }
-        .main-content {
-            max-width: 900px;
-            margin: 60px auto;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-            text-align: center;
+            height: 100vh;
         }
-        .payment-section, .upload-section {
+
+        .container {
+            max-width: 900px;
             width: 100%;
-            margin-bottom: 30px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
         }
-        .payment-info {
-            font-size: 20px;
-            margin-bottom: 15px;
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
         }
-        .payment-btn {
+
+        .payment-instructions {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #222;
+        }
+
+        .bank-qr-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .bank-details {
+            flex: 1;
+            text-align: left;
+        }
+
+        .bank-details h2 {
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+        .bank-btn {
             width: 100%;
             padding: 14px;
-            font-size: 18px;
-            border: none;
+            font-size: 20px;
+            font-weight: bold;
+            border: 2px solid #222;
             background: #000;
             color: #fff;
-            font-weight: bold;
             cursor: pointer;
             border-radius: 6px;
-            transition: background 0.3s, transform 0.2s;
+            transition: background 0.3s ease, transform 0.2s ease-in-out;
         }
-        .payment-btn:hover {
+
+        .bank-btn:hover {
             background: #333;
-            transform: scale(1.03);
+            transform: scale(1.05);
         }
-        .qr-placeholder {
-            width: 200px;
-            height: 200px;
-            border: 4px solid #222;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 80px;
-            color: #888;
-            background: #fafafa;
-            margin: 20px auto;
+
+        .qr-section {
+            flex: 1;
+            text-align: right;
         }
-        input[type="file"] {
-            padding: 10px;
-            font-size: 16px;
+
+        .qr-section h2 {
+            font-size: 22px;
+            margin-bottom: 12px;
         }
-        .complete-btn {
-            padding: 12px 32px;
-            background: #4CAF50;
+
+        .qr-image {
+            width: 240px;
+            height: 240px;
+            border-radius: 8px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .form-btn {
+            display: block;
+            background: #007bff;
+            color: #fff;
+            font-size: 20px;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .form-btn:hover {
+            background: #0056b3;
+        }
+
+        .home-btn {
+            display: block;
+            margin-top: 20px;
+            background: #000;
             color: #fff;
             font-size: 18px;
-            font-weight: bold;
+            padding: 12px 24px;
+            text-decoration: none;
             border-radius: 6px;
-            border: none;
-            cursor: pointer;
-            transition: background 0.3s;
+            transition: background 0.3s ease;
         }
-        .complete-btn:disabled {
-            background: #888;
-            cursor: not-allowed;
-        }
-        .complete-btn:hover {
-            background: #45a049;
+
+        .home-btn:hover {
+            background: #333;
         }
     </style>
 </head>
 <body>
-    <div class="header-bar"><span class="dots">&#9679;&#9679;&#9679;</span></div>
-    <div class="main-content">
-        <div class="payment-section">
-            <p class="payment-info">PLEASE TRANSFER TO OUR OFFICIAL BANK ACCOUNT</p>
-            <button class="payment-btn">XXX-XXXXX-XXXXX-XXXX<br>ABCDE BANK</button>
-            <p class="payment-info">WE ALSO ACCEPT:</p>
-            <button class="payment-btn">TOUCH N GO</button>
-            <p class="payment-info">OR SCAN THE QR BELOW:</p>
-            <div class="qr-placeholder">&#9632;&#9632;</div>
+
+    <div class="container">
+        <h1>Payment Submission</h1>
+        <p class="payment-instructions">After making a payment, please upload your receipt using the Google Form link below.</p>
+
+        <div class="bank-qr-section">
+            <div class="bank-details">
+                <h2>Bank Transfer Details</h2>
+                <button class="bank-btn">9999-99999-99999-9999<br> BANK SIMPANAN NASIONAL</button>
+            </div>
+            <div class="qr-section">
+                <h2>Scan QR Code to Pay</h2>
+                <img src="Payment/Qr code.jpg" alt="QR Code for Payment" class="qr-image">
+            </div>
         </div>
-        <div class="upload-section">
-            <p class="payment-info">SAVE THE PAYMENT RECEIPT AND UPLOAD IT HERE:</p>
-            <input type="file" id="receipt" accept="image/*,application/pdf" required>
-            <button class="complete-btn" id="completeBtn" disabled>Complete Payment</button>
-            <div id="uploadStatus"></div>
-        </div>
+
+        <a href="https://forms.gle/nZQsuRF7xvxex4hK9" class="form-btn">Upload Payment Receipt</a>
+        <a href="index.html" class="home-btn">Back to Home</a>
     </div>
 
-    <script>
-        const receiptInput = document.getElementById('receipt');
-        const completeBtn = document.getElementById('completeBtn');
-        const uploadStatus = document.getElementById('uploadStatus');
-
-        receiptInput.addEventListener('change', function() {
-            completeBtn.disabled = !this.files.length;
-            uploadStatus.textContent = '';
-        });
-
-        completeBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            if (!receiptInput.files.length) return;
-
-            uploadStatus.textContent = "Uploading...";
-            setTimeout(() => {
-                uploadStatus.textContent = "Payment confirmed! Redirecting...";
-                completeBtn.disabled = true;
-                setTimeout(() => window.location.href = 'home.html', 2000);
-            }, 1500);
-        });
-    </script>
 </body>
 </html>
